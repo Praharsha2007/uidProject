@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login - BeatFlow</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+
+body{
+  font-family:'DM Sans',sans-serif;
+  background:#0a0a14;
+  color:#fff;
+  display:flex;
+  height:100vh;
+}
+
+/* BACKGROUND */
+.bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+}
+
+.circle {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: rgba(192,132,252,0.4);
+  filter: blur(40px);
+  animation: updown 5s infinite ease-in-out;
+}
+
+.c1 { left: 10%; top: 70%; }
+.c2 { left: 40%; top: 80%; animation-delay: 1s; }
+.c3 { left: 70%; top: 75%; animation-delay: 2s; }
+.c4 { left: 85%; top: 65%; animation-delay: 3s; }
+
+@keyframes updown {
+  0%,100% { transform: translateY(0); }
+  50% { transform: translateY(-100px); }
+}
+
+/* SPLIT */
+.wrapper{
+  display:flex;
+  width:100%;
+}
+
+/* LEFT SIDE */
+.left{
+  flex:1;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  gap:15px;
+}
+
+/* ANIMATED TITLE */
+.title{
+  display:flex;
+}
+
+.letter{
+  font-family:'Syne';
+  font-size:70px;
+  font-weight:800;
+  opacity:0;
+  transform:translateY(40px);
+  animation:letterIn 0.5s ease forwards;
+}
+
+.letter.purple{
+  color:#c084fc;
+}
+
+@keyframes letterIn{
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.tag{
+  font-size:14px;
+  color:#888;
+  letter-spacing:3px;
+}
+
+/* RIGHT SIDE */
+.right{
+  flex:1;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* LOGIN BOX */
+.container{
+  width:420px;
+  padding:40px;
+  background:rgba(20,20,35,0.85);
+  border-radius:18px;
+  border:1px solid rgba(255,255,255,0.08);
+  backdrop-filter:blur(20px);
+}
+
+h2{
+  font-family:'Syne';
+  text-align:center;
+  margin-bottom:20px;
+  font-size:26px;
+}
+
+input{
+  width:100%;
+  padding:14px;
+  margin-bottom:15px;
+  border-radius:10px;
+  border:none;
+  background:#111118;
+  color:#fff;
+}
+
+button{
+  width:100%;
+  padding:14px;
+  border:none;
+  border-radius:30px;
+  background:linear-gradient(135deg,#c084fc,#818cf8);
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+p{
+  text-align:center;
+  margin-top:12px;
+}
+
+a{color:#c084fc;}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .wrapper{
+    flex-direction:column;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div class="bg">
+  <div class="circle c1"></div>
+  <div class="circle c2"></div>
+  <div class="circle c3"></div>
+  <div class="circle c4"></div>
+</div>
+
+<div class="wrapper">
+
+  <!-- LEFT -->
+  <div class="left">
+    <div class="title" id="title"></div>
+    <div class="tag">PREMIUM SOUND • PURE FLOW</div>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="right">
+    <div class="container">
+      <h2>Welcome Back</h2>
+
+      <input type="text" id="username" placeholder="Username">
+      <input type="password" id="password" placeholder="Password">
+
+      <button onclick="login()">Login</button>
+
+      <p>Don't have an account? <a href="signup.html">Sign Up</a></p>
+    </div>
+  </div>
+
+</div>
+
+<script>
+var word = "BEATFLOW";
+var titleEl = document.getElementById('title');
+
+for (var i = 0; i < word.length; i++) {
+  var span = document.createElement('span');
+  span.className = i >= 4 ? 'letter purple' : 'letter';
+  span.textContent = word[i];
+  span.style.animationDelay = (i * 0.08) + 's';
+  titleEl.appendChild(span);
+}
+function login(){
+  const username = document.getElementById("username").value
+  const password = document.getElementById("password").value
+
+  const user = JSON.parse(localStorage.getItem("user"))
+
+  if(user && user.username === username && user.password === password){
+
+    // ✅ STORE LOGIN
+    sessionStorage.setItem("isLoggedIn", "true")
+
+    // 🔥 GO BACK TO ROOT (THIS LOADS APP)
+    window.location.href = "/"
+  } 
+  else {
+    alert("Invalid credentials")
+  }
+}
+</script>
+
+</body>
+</html>

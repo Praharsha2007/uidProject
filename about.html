@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BeatFlow – About</title>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    /* 🔥 SIMPLE PAGE LOAD ANIMATION */
+
+  .main {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 0.8s ease forwards;
+  }
+
+  .hero {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease forwards;
+  }
+
+  .vision-card,
+  .team-card {
+    opacity: 0;
+    transform: translateY(30px);
+    animation: fadeInUp 1s ease forwards;
+  }
+
+  @keyframes fadeInUp {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+    body {
+      background: #0a0a14;
+      color: #e8e8f0;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+    }
+    a { text-decoration: none; color: inherit; }
+
+    nav {
+      background: #0d0d20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 32px;
+      height: 52px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: sticky; top: 0; z-index: 100;
+    }
+    /* ===== SIDEBAR ===== */
+.sidebar {
+  width: 230px;
+  min-width: 230px;
+  height: 100vh;
+  background: rgba(14, 14, 20, 0.85);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(255,255,255,0.06);
+  padding: 28px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.logo-icon {
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, #c084fc, #818cf8);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(192,132,252,0.35);
+}
+
+.logo-text h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+  color: #f1f0ff;
+}
+
+.logo-text p {
+  font-size: 10px;
+  color: rgba(192,132,252,0.7);
+}
+
+/* MENU */
+.menu {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.menu li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: rgba(255,255,255,0.45);
+  transition: 0.2s;
+}
+
+.menu li:hover {
+  color: #fff;
+  background: rgba(192,132,252,0.1);
+}
+
+.menu li.active {
+  color: #fff;
+  background: rgba(192,132,252,0.18);
+}
+    .nav-logo {
+      font-family: 'Raleway', sans-serif;
+      font-weight: 800;
+      font-size: 20px;
+      color: #E7A2E5;
+      letter-spacing: -0.5px;
+    }
+    .nav-logo span { color: #e8e8f0; }
+    .nav-links { display: flex; gap: 28px; font-size: 13px; color: #9090b0; }
+    .nav-links a:hover { color: #e8e8f0; }
+    .nav-links a.active { color: #E7A2E5; font-weight: 600; }
+    .nav-right { display: flex; gap: 12px; align-items: center; }
+    .nav-right .icon-btn {
+      background: none; border: none; cursor: pointer;
+      color: #9090b0; font-size: 16px; padding: 4px 8px;
+    }
+
+    .layout { display: flex; min-height: calc(100vh - 52px); }
+    .sidebar {
+      width: 200px; min-width: 200px;
+      background: #0d0d20;
+      border-right: 1px solid rgba(255,255,255,0.05);
+      padding: 24px 0;
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .sidebar-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 10px 24px; font-size: 13px; color: #9090b0;
+      cursor: pointer; border-left: 2px solid transparent;
+      transition: all 0.2s;
+    }
+    .sidebar-item:hover { color: #e8e8f0; background: rgba(255,255,255,0.04); }
+    .sidebar-item.active {
+      color: #E7A2E5;
+      border-left-color: #E7A2E5;
+      background: rgba(231,162,229,0.08);
+    }
+    .sidebar-icon { font-size: 15px; width: 18px; text-align: center; }
+
+    .main { flex: 1; padding: 40px 48px; overflow-y: auto; }
+
+    .hero {
+      background: linear-gradient(135deg, #1a1245 0%, #2d1060 50%, #1a0a30 100%);
+      border-radius: 16px;
+      padding: 40px 44px;
+      margin-bottom: 48px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; top: -30px; right: -30px;
+      width: 220px; height: 220px;
+      background: radial-gradient(circle, rgba(123,94,167,0.35) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero::after {
+      content: '';
+      position: absolute; bottom: -20px; left: 40%;
+      width: 160px; height: 160px;
+      background: radial-gradient(circle, rgba(231,162,229,0.2) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: rgba(231,162,229,0.2);
+      color: #E7A2E5;
+      font-size: 11px; font-weight: 700;
+      letter-spacing: 1.5px; text-transform: uppercase;
+      padding: 4px 12px; border-radius: 20px;
+      margin-bottom: 16px;
+    }
+    .hero h1 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 34px; font-weight: 800;
+      line-height: 1.2; margin-bottom: 14px;
+      position: relative; z-index: 1;
+    }
+    .hero h1 span { color: #E7A2E5; }
+    .hero p {
+      color: rgba(232,232,240,0.75);
+      max-width: 540px; font-size: 14.5px;
+      position: relative; z-index: 1;
+    }
+
+    .section-title {
+      font-family: 'Raleway', sans-serif;
+      font-size: 20px; font-weight: 700;
+      margin-bottom: 6px;
+      color: #e8e8f0;
+    }
+    .section-sub {
+      color: #9090b0; font-size: 13px;
+      margin-bottom: 24px;
+    }
+
+    .vision-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 48px;
+    }
+    .vision-card {
+      background: #12122a;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px;
+      padding: 28px;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .vision-card:hover {
+      transform: translateY(-3px);
+      border-color: rgba(231,162,229,0.3);
+    }
+    .vision-card .icon { font-size: 26px; margin-bottom: 14px; }
+    .vision-card h3 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 15px; font-weight: 700;
+      margin-bottom: 8px;
+      color: #e8e8f0;
+    }
+    .vision-card p { color: #9090b0; font-size: 13.5px; line-height: 1.65; }
+
+    .features-row {
+      display: flex; gap: 14px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+    .feature-pill {
+      background: #1a1a35;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 10px;
+      padding: 14px 20px;
+      display: flex; align-items: center; gap: 10px;
+      font-size: 13px; font-weight: 600;
+      color: #e8e8f0;
+      flex: 1; min-width: 140px;
+    }
+    .feature-pill .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #E7A2E5;
+      flex-shrink: 0;
+    }
+    .feature-pill .dot.green { background: #1db954; }
+    .feature-pill .dot.purple { background: #7b5ea7; }
+
+    .tech-section { margin-bottom: 48px; }
+    .tech-list {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      margin-top: 16px;
+    }
+    .tech-badge {
+      background: #1a1a35;
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: 12.5px; font-weight: 600; color: #9090b0;
+      transition: all 0.2s;
+    }
+    .tech-badge:hover { color: #e8e8f0; border-color: #7b5ea7; }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+      margin-bottom: 48px;
+    }
+    .team-card {
+      background: #12122a;
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 14px;
+      padding: 24px 16px;
+      text-align: center;
+      transition: transform 0.2s, border-color 0.2s;
+    }
+    .team-card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(123,94,167,0.4);
+    }
+    .avatar {
+      width: 70px; height: 70px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7b5ea7, #E7A2E5);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 14px;
+      font-size: 26px; font-weight: 700;
+      color: #fff;
+      font-family: 'Raleway', sans-serif;
+      border: 2px solid rgba(255,255,255,0.1);
+    }
+    .team-card h4 {
+      font-family: 'Raleway', sans-serif;
+      font-size: 14px; font-weight: 700;
+      margin-bottom: 4px;
+      color: #e8e8f0;
+    }
+    .team-card .role {
+      font-size: 11.5px; color: #E7A2E5;
+      font-weight: 600; letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+    .team-card .dept { font-size: 11px; color: #9090b0; }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      color: #9090b0;
+      font-size: 12px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+    /* ===== SIDEBAR ===== */
+.sidebar {
+  width: 230px;
+  min-width: 230px;
+  height: 100vh;
+  background: rgba(14, 14, 20, 0.85);
+  backdrop-filter: blur(20px);
+  border-right: 1px solid rgba(255,255,255,0.06);
+  padding: 28px 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+/* LOGO */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 30px;
+}
+
+.logo-icon {
+  width: 42px;
+  height: 42px;
+  background: linear-gradient(135deg, #c084fc, #818cf8);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 20px rgba(192,132,252,0.35);
+}
+
+.logo-text h2 {
+  font-family: 'Syne', sans-serif;
+  font-size: 17px;
+  font-weight: 800;
+  color: #f1f0ff;
+}
+
+.logo-text p {
+  font-size: 10px;
+  color: rgba(192,132,252,0.7);
+}
+
+/* MENU */
+.menu {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.menu li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 11px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  color: rgba(255,255,255,0.45);
+  transition: 0.2s;
+}
+
+.menu li:hover {
+  color: #fff;
+  background: rgba(192,132,252,0.1);
+}
+
+.menu li.active {
+  color: #fff;
+  background: rgba(192,132,252,0.18);
+}
+
+    @media (max-width: 900px) {
+      .sidebar { display: none; }
+      .main { padding: 24px 20px; }
+      .vision-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 500px) {
+      .team-grid { grid-template-columns: 1fr 1fr; }
+      .hero h1 { font-size: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="layout">
+
+  <div class="sidebar">
+  <div class="logo">
+    <div class="logo-icon">🎵</div>
+    <div class="logo-text">
+      <h2>BeatFlow</h2>
+      <p>PREMIUM SOUND</p>
+    </div>
+  </div>
+
+  <ul class="menu">
+    <li onclick="window.location.href='/'">
+      <span class="menu-icon">🏠</span><span>Home</span>
+    </li>
+
+    <li onclick="window.location.href='/'">
+      <span class="menu-icon">🎵</span><span>Library</span>
+    </li>
+
+    <li class="active" onclick="window.location.href='/about.html'">
+      <span class="menu-icon">📈</span><span>About</span>
+    </li>
+
+    <li onclick="window.location.href='/contact.html'">
+      <span class="menu-icon">✉️</span><span>Contact</span>
+    </li>
+  </ul>
+</div>
+
+  <main class="main">
+
+    <div class="hero">
+      <div class="hero-tag">UID Project · Music App</div>
+      <h1>About <span>BeatFlow</span></h1>
+      <p>
+        We are revolutionising the music experience by bridging the gap between
+        artistic intent and listener discovery through immersive technology.
+        Every beat tells a story — BeatFlow helps you find yours.
+      </p>
+    </div>
+
+    <div class="section-title">The Vision</div>
+    <p class="section-sub">Why BeatFlow exists and what drives us</p>
+
+    <div class="vision-grid">
+      <div class="vision-card">
+        <div class="icon">🎵</div>
+        <h3>Born from Passion</h3>
+        <p>BeatFlow was born from a singular belief: music streaming shouldn't just be a utility, but a high-fidelity portal to culture. We chose this project because audio quality, accessibility, and personalised discovery are often compromised in mainstream platforms.</p>
+      </div>
+      <div class="vision-card">
+        <div class="icon">🌐</div>
+        <h3>Our Goal</h3>
+        <p>To build an ecosystem where every beat is felt, every artist is discovered fairly, and every user enjoys a bespoke sonic journey tailored to their unique emotional frequency — all in one place.</p>
+      </div>
+      <div class="vision-card">
+        <div class="icon">🔬</div>
+        <h3>Project Purpose</h3>
+        <p>Designed as a UI/UX Design project, BeatFlow demonstrates how thoughtful interface design can transform how users interact with music — focusing on intuitive navigation, rich visual feedback, and seamless discovery flows.</p>
+      </div>
+      <div class="vision-card">
+        <div class="icon">🤝</div>
+        <h3>User-Centred Approach</h3>
+        <p>Every screen, every interaction, and every transition in BeatFlow is informed by real listener needs — from casual streamers to audiophile enthusiasts who demand lossless studio quality.</p>
+      </div>
+    </div>
+
+    <div class="section-title">Key Features</div>
+    <p class="section-sub">What makes BeatFlow different</p>
+
+    <div class="features-row">
+      <div class="feature-pill"><span class="dot green"></span> Lossless Audio</div>
+      <div class="feature-pill"><span class="dot purple"></span> Song Discovery</div>
+      <div class="feature-pill"><span class="dot"></span> Pure Audio Mode</div>
+      <div class="feature-pill"><span class="dot green"></span> Instant Access</div>
+      <div class="feature-pill"><span class="dot purple"></span> Artist Discovery</div>
+    </div>
+
+    <div class="tech-section">
+      <div class="section-title">Technologies Used</div>
+      <p class="section-sub">Tools and technologies powering the BeatFlow experience</p>
+      <div class="tech-list">
+        <span class="tech-badge">HTML5</span>
+        <span class="tech-badge">CSS3</span>
+        <span class="tech-badge">JavaScript</span>
+        <span class="tech-badge">Google Fonts</span>
+        <span class="tech-badge">Responsive Design</span>
+        <span class="tech-badge">Flexbox & Grid</span>
+        <span class="tech-badge">CSS Animations</span>
+        <span class="tech-badge">React JS</span>
+      </div>
+    </div>
+
+    <div class="section-title">Our Team</div>
+    <p class="section-sub">The minds behind the flow</p>
+
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="avatar">P</div>
+        <h4>Praharsha</h4>
+        <div class="role">UI/UX Designer</div>
+        <div class="dept">Home, Library, Sign Up Page</div>
+      </div>
+      <div class="team-card">
+        <div class="avatar">K</div>
+        <h4>Karthik</h4>
+        <div class="role">UI/UX Designer</div>
+        <div class="dept">Song Details, Login Page</div>
+      </div>
+      <div class="team-card">
+        <div class="avatar">Z</div>
+        <h4>Zubair</h4>
+        <div class="role">UI/UX Designer</div>
+        <div class="dept">About Page</div>
+      </div>
+      <div class="team-card">
+        <div class="avatar">S</div>
+        <h4>Sumadhur</h4>
+        <div class="role">UI/UX Designer</div>
+        <div class="dept">Contact Page</div>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<footer>
+   BeatFlow · UID Project ·
+</footer>
+<script>
+  const sidebarItems = document.querySelectorAll('.sidebar-item');
+  sidebarItems.forEach(function(item) {
+    item.addEventListener('click', function() {
+      sidebarItems.forEach(function(i) { i.classList.remove('active'); });
+      item.classList.add('active');
+    });
+  });
+  const cards = document.querySelectorAll('.vision-card, .team-card');
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.style.opacity = '1';
+        entry.target.style.transform = 'translateY(0)';
+      }
+    });
+  });
+  cards.forEach(function(card) {
+    card.style.opacity = '0';
+    card.style.transform = 'translateY(20px)';
+    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    observer.observe(card);
+  });
+</script>
+</body>
+</html>

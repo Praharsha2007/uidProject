@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>BeatFlow</title>
+
+<!-- CSS FILES -->
+<link rel="stylesheet" href="css/index.css">
+<link rel="stylesheet" href="css/sidebar.css">
+<link rel="stylesheet" href="css/SongCard.css">
+<link rel="stylesheet" href="css/player.css">
+<link rel="stylesheet" href="css/library.css">
+
+<!-- FONTS -->
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;700;800&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="app-layout">
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+    <div class="logo">
+      <div class="logo-icon">🎵</div>
+      <div class="logo-text">
+        <h2>BeatFlow</h2>
+        <p>Premium Sound</p>
+      </div>
+    </div>
+
+    <span class="nav-label">Menu</span>
+
+    <ul class="menu">
+      <li onclick="navigate('Home')" id="homeBtn" class="active">
+        <span class="menu-icon">🏠</span> Home
+      </li>
+      <li onclick="navigate('Library')" id="libBtn">
+        <span class="menu-icon">🎵</span> Library
+      </li>
+      <li onclick="location.href='about.html'">
+        <span class="menu-icon">📈</span> About
+      </li>
+      <li onclick="location.href='contact.html'">
+        <span class="menu-icon">✉️</span> Contact
+      </li>
+    </ul>
+  </div>
+
+  <!-- MAIN CONTENT -->
+  <div class="main-content">
+
+    <!-- HOME PAGE -->
+    <div id="homePage">
+      <div class="section-header">
+        <h1>Home</h1>
+      </div>
+
+      <div class="song-container" id="songs"></div>
+    </div>
+
+    <!-- LIBRARY PAGE -->
+    <div id="libraryPage" style="display:none;">
+      <div class="library-page">
+
+        <div class="section-header">
+          <h1>Library</h1>
+          <p id="libCount">0 tracks saved</p>
+        </div>
+
+        <div id="libraryEmpty" class="library-empty">
+          <div class="empty-icon">🎵</div>
+          <h3>Your library is empty</h3>
+          <p>Play a song and hit the <span>+</span> button</p>
+        </div>
+
+        <div class="song-container" id="library"></div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- 🔥 SONG CARD TEMPLATE (VERY IMPORTANT) -->
+<template id="songCardTemplate">
+  <div class="song-card">
+
+    <div class="song-image-wrap">
+      <img class="song-image">
+    </div>
+
+    <div class="song-info">
+      <h3 class="song-title"></h3>
+      <p class="song-artist"></p>
+    </div>
+
+    <button class="play-button">▶</button>
+
+  </div>
+</template>
+
+<!-- PLAYER -->
+<div class="player" onclick="openPlayerPage()">
+
+  <!-- PROGRESS BAR -->
+
+
+  <!-- LEFT -->
+  <div class="player-left" onclick="event.stopPropagation()">
+    <img id="cover" src="">
+
+    <div>
+      <h4 id="title">No song selected</h4>
+      <p id="artist">Pick a track</p>
+    </div>
+
+    <button id="addBtn" class="add-btn"
+      onclick="event.stopPropagation(); addToLibrary()">+</button>
+  </div>
+
+  <!-- CENTER -->
+  <div class="player-center">
+    <button class="ctrl-btn"
+      onclick="event.stopPropagation(); rewind()">⏮</button>
+
+    <button id="playBtn" class="play-btn"
+  onclick="event.stopPropagation(); togglePlay()">▶</button>
+
+    <button class="ctrl-btn"
+      onclick="event.stopPropagation(); forward()">⏭</button>
+  </div>
+
+  <!-- RIGHT -->
+  <div class="player-right" onclick="event.stopPropagation()">
+    <input type="range" id="volume"
+      min="0" max="1" step="0.01" value="0.8"
+      onclick="event.stopPropagation()">
+  </div>
+
+</div>
+
+</div>
+
+<!-- AUDIO -->
+<audio id="audio"></audio>
+
+<!-- JS -->
+<script src="js/app.js"></script>
+
+</body>
+</html>
