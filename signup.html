@@ -18,7 +18,6 @@ body{
   height:100vh;
 }
 
-/* BACKGROUND */
 .bg {
   position: fixed;
   inset: 0;
@@ -280,13 +279,18 @@ var titleEl = document.getElementById('title');
 
 for (var i = 0; i < word.length; i++) {
   var span = document.createElement('span');
-  span.className = i >= 4 ? 'letter purple' : 'letter';
+  if (i >= 4) {
+        span.className = 'letter purple';
+      } else {
+        span.className = 'letter';
+  }
   span.textContent = word[i];
   span.style.animationDelay = (i * 0.08) + 's';
   titleEl.appendChild(span);
 }
 
 function signup(){
+  const email = document.getElementById("email").value
   const username=document.getElementById("username").value
   const password=document.getElementById("password").value
 
