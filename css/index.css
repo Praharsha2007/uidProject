@@ -74,8 +74,6 @@ body::after {
   gap: 20px;
   align-items: flex-start;
 }
-
-/* FIX PLAYER CENTER */
 .player-center {
   position: absolute;
   left: 50%;
@@ -84,8 +82,6 @@ body::after {
   align-items: center;
   gap: 20px;
 }
-
-/* FIX LEFT SECTION */
 .player-left {
   display: flex;
   align-items: center;
@@ -93,11 +89,11 @@ body::after {
 }
 .main-content {
   flex: 1;
-  padding-left: 40px;   /* 🔥 aligns with cards */
-  padding-top: 20px;    /* 🔥 fixes top spacing */
+  padding-left: 40px;  
+  padding-top: 20px;   
 }
 .section-header {
-  margin-left: 40px;   /* 🔥 aligns header with cards */
+  margin-left: 40px;  
   margin-bottom: 20px;
 }
 .song-container {
@@ -107,11 +103,10 @@ body::after {
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
-  padding: 40px 20px 140px;  /* 🔥 reduce side padding */
-  width: 100%;               /* 🔥 prevent overflow */
-  box-sizing: border-box;    /* 🔥 important */
+  padding: 40px 20px 140px; 
+  width: 100%;               
+  box-sizing: border-box;   
 }
-/* PAGE ANIMATION */
 .page {
   opacity: 0;
   transform: translateY(20px);
@@ -122,8 +117,6 @@ body::after {
   opacity: 1;
   transform: translateY(0);
 }
-
-/* OPTIONAL: smoother feel */
 .page.fade-out {
   opacity: 0;
   transform: translateY(10px);

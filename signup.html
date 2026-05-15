@@ -43,14 +43,10 @@ body{
   0%,100% { transform: translateY(0); }
   50% { transform: translateY(-100px); }
 }
-
-/* SPLIT */
 .wrapper{
   display:flex;
   width:100%;
 }
-
-/* LEFT SIDE */
 .left{
   flex:1;
   display:flex;
@@ -59,12 +55,9 @@ body{
   align-items:center;
   gap:15px;
 }
-
-/* ANIMATED TITLE */
 .title{
   display:flex;
 }
-
 .letter{
   font-family:'Syne';
   font-size:70px;
@@ -73,33 +66,26 @@ body{
   transform:translateY(40px);
   animation:letterIn 0.5s ease forwards;
 }
-
 .letter.purple{
   color:#c084fc;
 }
-
 @keyframes letterIn{
   to{
     opacity:1;
     transform:translateY(0);
   }
 }
-
 .tag{
   font-size:14px;
   color:#888;
   letter-spacing:3px;
 }
-
-/* RIGHT SIDE */
 .right{
   flex:1;
   display:flex;
   justify-content:center;
   align-items:center;
 }
-
-/* SIGNUP BOX */
 .container{
   width:420px;
   padding:40px;
@@ -108,14 +94,12 @@ body{
   border:1px solid rgba(255,255,255,0.08);
   backdrop-filter:blur(20px);
 }
-
 h2{
   font-family:'Syne';
   text-align:center;
   margin-bottom:20px;
   font-size:26px;
 }
-
 input{
   width:100%;
   padding:14px;
@@ -125,7 +109,6 @@ input{
   background:#111118;
   color:#fff;
 }
-
 button{
   width:100%;
   padding:14px;
@@ -136,101 +119,75 @@ button{
   font-weight:bold;
   cursor:pointer;
 }
-
 p{
   text-align:center;
   margin-top:12px;
 }
 
 a{color:#c084fc;}
-
-/* RESPONSIVE */
 @media(max-width:768px){
   .wrapper{
     flex-direction:column;
   }
 }
-/* ========================= */
-/* 📱 RESPONSIVE DESIGN */
-/* ========================= */
-
-/* Tablet */
 @media (max-width: 1024px) {
-
   .letter {
     font-size: 50px;
   }
-
   .container {
     width: 360px;
     padding: 30px;
   }
-
   h2 {
     font-size: 22px;
   }
 }
-
-/* Mobile */
 @media (max-width: 768px) {
-
   body {
     height: auto;
   }
-
   .wrapper {
     flex-direction: column;
     align-items: center;
     padding: 30px 20px;
     gap: 30px;
   }
-
   .left {
     order: 1;
     text-align: center;
   }
-
   .right {
     order: 2;
     width: 100%;
   }
-
   .container {
     width: 100%;
     max-width: 380px;
   }
-
   .letter {
     font-size: 40px;
   }
-
   .tag {
     font-size: 12px;
     letter-spacing: 2px;
   }
 }
 
-/* Small Mobile */
 @media (max-width: 480px) {
-
   .letter {
     font-size: 30px;
   }
-
   .container {
     padding: 25px;
   }
-
   input {
     padding: 12px;
     font-size: 13px;
   }
-
   button {
     padding: 12px;
     font-size: 14px;
   }
-
   h2 {
     font-size: 20px;
   }

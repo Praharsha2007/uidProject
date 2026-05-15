@@ -3,20 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <title>BeatFlow — Contact</title>
-
-  <!-- SAME CSS -->
   <link rel="stylesheet" href="css/index.css">
   <link rel="stylesheet" href="css/sidebar.css">
   <link rel="stylesheet" href="css/player.css">
-
-  <!-- FONTS -->
   <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-
-  <!-- REACT -->
   <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
   <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-
   <style>
     body {
       margin: 0;
@@ -24,13 +17,10 @@
       color: white;
       font-family: 'DM Sans', sans-serif;
     }
-
     .app-layout {
       display: flex;
       min-height: 100vh;
     }
-
-    /* 🔥 FIXED ALIGNMENT */
     .main-content {
       flex: 1;
       padding: 40px 80px;
@@ -38,7 +28,6 @@
       align-items: center;
       justify-content: space-between;
     }
-
     .contact-container {
       display: flex;
       gap: 80px;
@@ -47,25 +36,21 @@
       align-items: center;
       justify-content: space-between;
     }
-
     .left-section h1 {
       font-family: 'Syne', sans-serif;
       font-size: 48px;
       line-height: 1.2;
     }
-
     .left-section span {
       color: #c084fc;
     }
-
     .left-section p {
       color: rgba(255,255,255,0.5);
       margin-top: 10px;
     }
-
     .form-box {
       width: 420px;
-      margin-left: auto; /* 🔥 pushes right */
+      margin-left: auto;
       background: rgba(255,255,255,0.04);
       border-radius: 16px;
       padding: 30px;
@@ -113,8 +98,6 @@
 <body>
 
 <div class="app-layout">
-
-  <!-- SIDEBAR -->
   <div class="sidebar">
     <div class="logo">
       <div class="logo-icon">🎵</div>
@@ -123,18 +106,15 @@
         <p>Premium Sound</p>
       </div>
     </div>
-
     <span class="nav-label">Menu</span>
-
     <ul class="menu">
       <li onclick="location.href='index.html'">
         <span class="menu-icon">🏠</span> Home
       </li>
 
-      <li onclick="location.href='index.html'">
-        <span class="menu-icon">🎵</span> Library
-      </li>
-
+      <li onclick="window.location.href='index.html#library'">
+        <span class="menu-icon">🎵</span><span>Library</span>
+        </li>
       <li onclick="location.href='about.html'">
         <span class="menu-icon">📈</span> About
       </li>
@@ -144,15 +124,12 @@
       </li>
     </ul>
   </div>
-
-  <!-- MAIN -->
   <div class="main-content">
     <div id="root"></div>
   </div>
 
 </div>
 
-<!-- REACT -->
 <script type="text/babel">
 
 function ContactPage() {
@@ -210,9 +187,11 @@ function ContactPage() {
         <textarea
           placeholder="Your message"
           value={message}
-          onChange={(e) => setMessage(e.target.value)}
+          onChange={(e) => {
+            setMessage(e.target.value);
+            console.log(e.target.value);
+          }}
         />
-
         <button className="submit-btn" onClick={handleSubmit}>
           {sent ? "✓ MESSAGE SENT!" : "SEND MESSAGE"}
         </button>

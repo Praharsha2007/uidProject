@@ -18,80 +18,19 @@ if (!sessionStorage.getItem("appLoaded")) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-
   const songs = [
-    {
-      title: "Deva Shree Ganesha",
-      artist: "Ajay-Atul",
-      image: "assets/agneepath.webp",
-      audio: "songs/devashreeganesha.mp3"
-    },
-    {
-      title: "O Sayonara",
-      artist: "Sooraj Santosh",
-      image: "assets/one.webp",
-      audio: "songs/sayonara.mp3"
-    },
-    {
-      title: "Mere Samnewali Khidki Mein",
-      artist: "Kishore Kumar",
-      image: "assets/padosan.webp",
-      audio: "songs/meresamnewalikhidkimein.mp3"
-    },
-    {
-      title: "Kal Ho Na Ho",
-      artist: "Sonu Nigam",
-      image: "assets/khnh.webp",
-      audio: "songs/khnh.mp3"
-    },
-    {
-      title: "Dil Chahta Hai",
-      artist: "Shankar Mahadevan",
-      image: "assets/dch.webp",
-      audio: "songs/dch.mp3"
-    },
-    {
-      title: "Malare",
-      artist: "Vijay Yesudas",
-      image: "assets/premam.webp",
-      audio: "songs/malare.mp3"
-    },
-    {
-      title: "Balam Pichkari",
-      artist: "Vishal Dadlani",
-      image: "assets/yjhd.webp",
-      audio: "songs/balampichkari.mp3"
-    },
-    {
-      title: "Rooba Rooba",
-      artist: "Shahil Hada",
-      image: "assets/orange.webp",
-      audio: "songs/roobarooba.mp3"
-    },
-    {
-      title: "Jeena Jeena",
-      artist: "Atif Aslam",
-      image: "assets/badlapur.webp",
-      audio: "songs/jeenajeena.mp3"
-    },
-    {
-      title: "Iktara",
-      artist: "Amit Trivedi",
-      image: "assets/wakeupsid.webp",
-      audio: "songs/iktara.mp3"
-    },
-    {
-      title: "Wake Up Sid",
-      artist: "Shankar Mahadevan",
-      image: "assets/wakeupsid.webp",
-      audio: "songs/wakeupsid.mp3"
-    },
-    {
-      title: "Maahi Ve",
-      artist: "Shankar Ehsaan Loy",
-      image: "assets/khnh.webp",
-      audio: "songs/maahive.mp3"
-    }
+    { title: "Deva Shree Ganesha", artist: "Ajay-Atul", image: "assets/agneepath.webp", audio: "songs/devashreeganesha.mp3" },
+    { title: "O Sayonara", artist: "Sooraj Santosh", image: "assets/one.webp", audio: "songs/sayonara.mp3" },
+    { title: "Mere Samnewali Khidki Mein", artist: "Kishore Kumar", image: "assets/padosan.webp", audio: "songs/meresamnewalikhidkimein.mp3" },
+    { title: "Kal Ho Na Ho", artist: "Sonu Nigam", image: "assets/khnh.webp", audio: "songs/khnh.mp3" },
+    { title: "Dil Chahta Hai", artist: "Shankar Mahadevan", image: "assets/dch.webp", audio: "songs/dch.mp3" },
+    { title: "Malare", artist: "Vijay Yesudas", image: "assets/premam.webp", audio: "songs/malare.mp3" },
+    { title: "Balam Pichkari", artist: "Vishal Dadlani", image: "assets/yjhd.webp", audio: "songs/balampichkari.mp3" },
+    { title: "Rooba Rooba", artist: "Shahil Hada", image: "assets/orange.webp", audio: "songs/roobarooba.mp3" },
+    { title: "Jeena Jeena", artist: "Atif Aslam", image: "assets/badlapur.webp", audio: "songs/jeenajeena.mp3" },
+    { title: "Iktara", artist: "Amit Trivedi", image: "assets/wakeupsid.webp", audio: "songs/iktara.mp3" },
+    { title: "Wake Up Sid", artist: "Shankar Mahadevan", image: "assets/wakeupsid.webp", audio: "songs/wakeupsid.mp3" },
+    { title: "Maahi Ve", artist: "Shankar Ehsaan Loy", image: "assets/khnh.webp", audio: "songs/maahive.mp3" }
   ]
 
   let currentSong = null
@@ -125,39 +64,20 @@ document.addEventListener("DOMContentLoaded", () => {
       console.error("Songs container not found")
       return
     }
-
     container.innerHTML = ""
-
     if (!songs || songs.length === 0) {
       console.warn("No songs available")
       return
     }
-
     songs.forEach(song => {
       const card = createCard(song)
-
       if (!card) {
         console.error("Card creation failed", song)
         return
       }
-
       container.appendChild(card)
     })
-
-    const saved = localStorage.getItem("currentSong")
-
-    if (saved) {
-      const current = JSON.parse(saved)
-
-      document.querySelectorAll(".song-card").forEach(card => {
-        const title = card.querySelector(".song-title")?.innerText
-
-        if (title === current.title) {
-          card.classList.add("active-song")
-        }
-      })
-    }
-
+    
     attachProgress()
     console.log("Songs loaded")
   }
@@ -165,46 +85,26 @@ document.addEventListener("DOMContentLoaded", () => {
   function playSong(song) {
     currentSong = song
     localStorage.setItem("currentSong", JSON.stringify(song))
-
     audio.pause()
     audio.src = song.audio
-
     const btn = document.getElementById("addBtn")
-
     if (btn) {
       btn.innerText = "+"
       btn.classList.remove("added")
     }
-
     document.getElementById("title").innerText = song.title
     document.getElementById("artist").innerText = song.artist
     document.getElementById("cover").src = song.image
-
     const savedTime = parseFloat(localStorage.getItem("currentTime")) || 0
     audio.currentTime = savedTime
-
     audio.play().catch(() => {})
     localStorage.setItem("isPlaying", "true")
-
     audio.onplay = () => document.getElementById("playBtn").innerText = "⏸"
     audio.onpause = () => document.getElementById("playBtn").innerText = "▶"
-
-    audio.ontimeupdate = () => {
-      if (!audio.duration) return
-
-      const percent = (audio.currentTime / audio.duration) * 100
-      document.getElementById("progress").value = percent
-
-      localStorage.setItem("currentTime", audio.currentTime)
-      localStorage.setItem("isPlaying", !audio.paused)
-    }
   }
-
   window.togglePlay = function () {
     if (!audio) return
-
     const btn = document.getElementById("playBtn")
-
     if (audio.paused) {
       audio.play()
       btn.innerText = "⏸"
@@ -226,16 +126,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   window.addToLibrary = function () {
     if (!currentSong) return
-
     const btn = document.getElementById("addBtn")
     const exists = library.find(s => s.title === currentSong.title)
-
     if (!exists) {
       library.push(currentSong)
       localStorage.setItem("library", JSON.stringify(library))
       renderLibrary()
     }
-
     if (btn) {
       btn.innerText = "✓"
       btn.classList.add("added")
@@ -283,7 +180,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   const progress = document.getElementById("progress")
-
   loadSongs()
   renderLibrary()
 
@@ -329,14 +225,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (btn) btn.innerText = "▶"
     }
   }
-
 })
 
 function openPlayerPage() {
   const song = localStorage.getItem("currentSong")
 
   if (!song) {
-    alert("Play a song first 🎵")
+    alert("Play a song first")
     return
   }
 
@@ -356,8 +251,6 @@ function attachProgress() {
 
     const percent = (audio.currentTime / audio.duration) * 100
     progress.value = percent
-
-    localStorage.setItem("currentTime", audio.currentTime)
   }
 
   progress.addEventListener("input", (e) => {
@@ -373,4 +266,9 @@ setInterval(() => {
 
   localStorage.setItem("currentTime", audio.currentTime)
   localStorage.setItem("isPlaying", !audio.paused)
-}, 300)
+}, 100)
+window.addEventListener("DOMContentLoaded", () => {
+  if (window.location.hash === "#library") {
+    navigate("Library");
+  }
+});

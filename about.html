@@ -8,20 +8,16 @@
   <style>
 
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    /* 🔥 SIMPLE PAGE LOAD ANIMATION */
-
   .main {
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 0.8s ease forwards;
   }
-
   .hero {
     opacity: 0;
     transform: translateY(30px);
     animation: fadeInUp 1s ease forwards;
   }
-
   .vision-card,
   .team-card {
     opacity: 0;
@@ -54,7 +50,10 @@
       border-bottom: 1px solid rgba(255,255,255,0.06);
       position: sticky; top: 0; z-index: 100;
     }
-    /* ===== SIDEBAR ===== */
+.sidebar {
+  position: sticky;
+  top: 0;
+}
 .sidebar {
   width: 230px;
   min-width: 230px;
@@ -66,8 +65,6 @@
   display: flex;
   flex-direction: column;
 }
-
-/* LOGO */
 .logo {
   display: flex;
   align-items: center;
@@ -85,27 +82,22 @@
   justify-content: center;
   box-shadow: 0 0 20px rgba(192,132,252,0.35);
 }
-
 .logo-text h2 {
   font-family: 'Syne', sans-serif;
   font-size: 17px;
   font-weight: 800;
   color: #f1f0ff;
 }
-
 .logo-text p {
   font-size: 10px;
   color: rgba(192,132,252,0.7);
 }
-
-/* MENU */
 .menu {
   list-style: none;
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
-
 .menu li {
   display: flex;
   align-items: center;
@@ -116,7 +108,6 @@
   color: rgba(255,255,255,0.45);
   transition: 0.2s;
 }
-
 .menu li:hover {
   color: #fff;
   background: rgba(192,132,252,0.1);
@@ -126,13 +117,13 @@
   color: #fff;
   background: rgba(192,132,252,0.18);
 }
-    .nav-logo {
+.nav-logo {
       font-family: 'Raleway', sans-serif;
       font-weight: 800;
       font-size: 20px;
       color: #E7A2E5;
       letter-spacing: -0.5px;
-    }
+}
     .nav-logo span { color: #e8e8f0; }
     .nav-links { display: flex; gap: 28px; font-size: 13px; color: #9090b0; }
     .nav-links a:hover { color: #e8e8f0; }
@@ -166,7 +157,6 @@
     .sidebar-icon { font-size: 15px; width: 18px; text-align: center; }
 
     .main { flex: 1; padding: 40px 48px; overflow-y: auto; }
-
     .hero {
       background: linear-gradient(135deg, #1a1245 0%, #2d1060 50%, #1a0a30 100%);
       border-radius: 16px;
@@ -337,7 +327,6 @@
       font-size: 12px;
       border-top: 1px solid rgba(255,255,255,0.05);
     }
-    /* ===== SIDEBAR ===== */
 .sidebar {
   width: 230px;
   min-width: 230px;
@@ -349,8 +338,6 @@
   display: flex;
   flex-direction: column;
 }
-
-/* LOGO */
 .logo {
   display: flex;
   align-items: center;
@@ -380,8 +367,6 @@
   font-size: 10px;
   color: rgba(192,132,252,0.7);
 }
-
-/* MENU */
 .menu {
   list-style: none;
   display: flex;
@@ -411,7 +396,15 @@
 }
 
     @media (max-width: 900px) {
-      .sidebar { display: none; }
+      .sidebar {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 220px;
+      height: 100vh;
+      z-index: 1000;
+      transition: left 0.3s ease;
+    }
       .main { padding: 24px 20px; }
       .vision-grid { grid-template-columns: 1fr; }
       .team-grid { grid-template-columns: repeat(2, 1fr); }
@@ -440,8 +433,8 @@
       <span class="menu-icon">🏠</span><span>Home</span>
     </li>
 
-    <li onclick="window.location.href='/'">
-      <span class="menu-icon">🎵</span><span>Library</span>
+    <li onclick="window.location.href='index.html#library'">
+    <span class="menu-icon">🎵</span><span>Library</span>
     </li>
 
     <li class="active" onclick="window.location.href='/about.html'">
@@ -550,33 +543,5 @@
 
   </main>
 </div>
-
-<footer>
-   BeatFlow · UID Project ·
-</footer>
-<script>
-  const sidebarItems = document.querySelectorAll('.sidebar-item');
-  sidebarItems.forEach(function(item) {
-    item.addEventListener('click', function() {
-      sidebarItems.forEach(function(i) { i.classList.remove('active'); });
-      item.classList.add('active');
-    });
-  });
-  const cards = document.querySelectorAll('.vision-card, .team-card');
-  const observer = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.style.opacity = '1';
-        entry.target.style.transform = 'translateY(0)';
-      }
-    });
-  });
-  cards.forEach(function(card) {
-    card.style.opacity = '0';
-    card.style.transform = 'translateY(20px)';
-    card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
-    observer.observe(card);
-  });
-</script>
 </body>
 </html>

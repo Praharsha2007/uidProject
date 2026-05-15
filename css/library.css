@@ -1,9 +1,9 @@
 .library-page {
   flex: 1;
-  padding: 40px 20px 140px;  /* 🔥 reduce side padding */
+  padding: 40px 20px 140px; 
   overflow-y: auto;
-  overflow-x: hidden;        /* 🔥 remove horizontal scroll */
-  box-sizing: border-box;    /* 🔥 prevents overflow */
+  overflow-x: hidden;      
+  box-sizing: border-box;  
 }
 
 .library-empty {
@@ -12,7 +12,7 @@
   align-items: center;
   justify-content: center;
 
-  height: calc(100vh - 200px); /* 🔥 perfect vertical centering */
+  height: calc(100vh - 200px);
   margin: 0;
 }
 
