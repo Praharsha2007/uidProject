@@ -128,7 +128,7 @@
 }
 
 .play-button:hover {
-  transform: scale(1.1) !important;
+  transform: scale(1.1);
   box-shadow: 0 0 24px rgba(192,132,252,0.6);
 }
 
