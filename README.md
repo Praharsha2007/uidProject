@@ -14,6 +14,12 @@ A modern music streaming web application built using **HTML, CSS, and JavaScript
 * 💿 Song cards with play functionality
 * 📄 About and Contact pages
 
+## Team Members:
+- M. A Sree Praharsha - AM.SC.U4CSE25134
+- Bhanu Karthik - AM.SC.U4CSE25158
+- Mohammed Zubair - AM.SC.U4CSE25133
+- Sumadhur Reddy - AM.SC.U4CSE25154
+  
 ## 🛠 Tech Stack
 
 * **HTML5**
