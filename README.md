@@ -18,7 +18,23 @@ A modern music streaming web application built using **HTML, CSS, and JavaScript
 
 * **HTML5**
 * **CSS3**
-* **JavaScript (Vanilla JS)**
+* **React JS**
+
+## Concepts Used
+- DOM Manipulation
+- Event Handling
+- Dynamic HTML Generation
+- Arrays and Objects
+- Loops and Conditions
+- Session Storage
+- Local Storage
+- Template Cloning (<template> tag)
+- Flexbox Layout
+- CSS Grid
+- Responsive Web Design
+- CSS Custom Properties (Variables)
+- CSS Animations and Keyframes
+- Intersection Observer API
 
 ## 📂 Project Structure
 
