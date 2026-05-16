@@ -111,9 +111,6 @@ OR
 * Modern typography and layouts
 * Interactive song cards
 
-GitHub Repository:
-
-[uidProject Repository](https://github.com/Praharsha2007/uidProject?utm_source=chatgpt.com)
 
 ## 📄 License
 
